@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import com.martinetherton.pages.AowEntryPage;
 import com.martinetherton.pages.HomePage;
 
 public class HomePageTest {
@@ -35,4 +36,9 @@ public class HomePageTest {
 		assertThat(homePage.pageTitle(), Matchers.is("Home"));
 	}	
 	
+	@Test
+	public void gotoAow() {
+		AowEntryPage aowPage = homePage.gotoAow();
+		assertThat(aowPage.pageTitle(), Matchers.is("AOW Entry"));
+	}
 }

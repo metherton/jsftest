@@ -1,9 +1,13 @@
 package com.martinetherton.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomePage {
 
@@ -11,6 +15,8 @@ public class HomePage {
 	
 	@FindBy(how = How.ID, using = "pageTitle")
 	private WebElement pageTitle;
+
+	private By aowLinkLocator = By.id("aowLink");
 	
 	
 	public HomePage(WebDriver driver) {
@@ -23,6 +29,11 @@ public class HomePage {
 
 	public String pageTitle() {
 		return pageTitle.getText();
+	}
+
+	public AowEntryPage gotoAow() {
+		driver.findElement(aowLinkLocator).click();
+		return PageFactory.initElements(driver, AowEntryPage.class);
 	}
 	
 }
